@@ -99,7 +99,7 @@ async function sendPost(rota, body) {
         })
         const dataJson = await responseData.json()
         
-        dataJson.resultado = await dataJson.resultado.json()
+        dataJson.resultado = JSON.parse(dataJson.resultado)
 
         console.log('json', dataJson)
         alert(JSON.stringify(dataJson))
