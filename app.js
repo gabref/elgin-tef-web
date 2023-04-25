@@ -1,6 +1,6 @@
 const BASE_URL = 'http://localhost:2001/tef/v1'
 
-const vendas = []
+const historicoVendas = []
 
 function start() {
     window.location.href = "intent://connect/start"
@@ -30,8 +30,7 @@ function ativacao() {
 }
 
 async function reimpressao() {
-    const venda = await sendGet('/adm/reimpressao')
-    vendas.push[venda]
+    sendGet('/adm/reimpressao')
 }
 
 function relatorio() {
@@ -39,13 +38,19 @@ function relatorio() {
 }
 
 function venda() {
-    sendPost('/venda', null)
+    const venda = sendPost('/venda', null)
+
+    if (venda.resultado.data !== undefined)
+        historicoVendas.push(venda)
 }
 
 function debito() {
-    sendPost('/venda/debito', {
+    const venda = sendPost('/venda/debito', {
         valor: "1.00"
     })
+
+    if (venda.resultado.data !== undefined)
+        historicoVendas.push(venda)
 }
 
 function credito() {
@@ -55,14 +60,22 @@ function credito() {
         financiamento: "1"
     })
 
-    vendas.push(venda)
+    if (venda.resultado.data !== undefined)
+        historicoVendas.push(venda)
 }
 
 function cancelamento() {
+    const ultimaVenda = historicoVendas.pop()
+    if (ultimaVenda === undefined) return
+
+    const valor = ultimaVenda.resultado.valor
+    const nsu = ultimaVenda.resultado.nsu
+    const data = ultimaVenda.resultado.data.split(' ')[0]
+
     sendPost('/adm/cancelamento', {
-        valor: "1.00",
-        nsu: "000000",
-        data: "01/09/22"
+        valor,
+        nsu,
+        data
     })
 }
 
