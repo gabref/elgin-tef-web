@@ -93,12 +93,12 @@ async function sendPost(rota, body) {
         // const data = await responseData.text()
         const dataJson = await responseData.json()
         
-        console.log('success: ', data)
+        // console.log('success: ', data)
         // alert(data)
         alert(dataJson)
 
         return {
-            data,
+            // data,
             dataJson
         }
 
