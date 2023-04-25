@@ -72,10 +72,12 @@ function cancelamento() {
     const nsu = ultimaVenda.resultado.nsu
     const data = ultimaVenda.resultado.data.split(' ')[0]
 
+    console.log('dados resgatados', valor, nsu, data)
+
     sendPost('/adm/cancelamento', {
-        valor,
-        nsu,
-        data
+        valor: '1.00',
+        nsu: nsu,
+        data: '25/04/23'
     })
 }
 
