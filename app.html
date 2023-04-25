@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>App Client</title>
+    <style>body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h3 {
+  margin: 20px 0 10px;
+}
+
+a, button {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #337ab7;
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+a:hover, button:hover {
+  background-color: #23527c;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+section:last-of-type {
+  margin-bottom: 0;
+}</style>
+</head>
+<body>
+    <h1>App Client2</h1>
+
+    <h3>Iniciar / parar módulo Connect => link / HTML</h3>
+    <a href="intent://connect/start">[Iniciar Connect]</a>
+    <a href="intent://connect/stop">[Parar Connect]</a>
+
+    <br/><br/>
+
+    <h3>Iniciar / parar módulo Connect => botão / JavaScript</h3>
+    <button onclick="start()">Iniciar Connect</button>
+    <button onclick="stop()">Parar Connect</button>
+
+    <br/><br/>
+
+    <h3>Consumo da API REST => fetch / JavaScript</h3>
+    <button onclick="configuracao()">Configuração</button>
+    <button onclick="ativacao()">Ativação</button>
+    <button onclick="reimpressao()">Reimpressão</button>
+    <button onclick="relatorio()">Relatório</button>
+
+    <br/><br/>
+
+    <button onclick="venda()">Venda</button>
+    <button onclick="debito()">Débito</button>
+    <button onclick="credito()">Crédito</button>
+    <button onclick="cancelamento()">Cancelamento</button>
+	
+	<script>
+	const BASE_URL = 'http://localhost:2001/tef/v1'
+
+	function start() {
+		window.location.href = "intent://connect/start"
+	}
+
+	function stop() {
+		window.location.href = "intent://connect/stop"
+	}
+
+	function configuracao() {
+		sendPost('/configuracao', {
+			nome: "nome teste",
+			versao: "0.0.1",
+			textoPinpad: "teste texto",
+			macPinpad: "",
+			producao: "0",
+			estabelecimento: "estabelecimento teste",
+			terminal: "000000",
+			loja: ""
+		})
+	}
+
+	function ativacao() {
+		sendPost('/ativacao', {
+			cnpjCpf: "14.200.166/0001-66"
+		})
+	}
+
+	function reimpressao() {
+		sendGet('/adm/reimpressao')
+	}
+
+	function relatorio() {
+		sendGet('/adm/relatorio')
+	}
+
+	function venda() {
+		sendPost('/venda', null)
+	}
+
+	function debito() {
+		sendPost('/venda/debito', {
+			valor: "1.00"
+		})
+	}
+
+	function credito() {
+		sendPost('/venda/credito', {
+			valor: "1.00",
+			parcelas: "1",
+			financiamento: "1"
+		})
+	}
+
+	function cancelamento() {
+		sendPost('/adm/cancelamento', {
+			valor: "1.00",
+			nsu: "000000",
+			data: "01/09/22"
+		})
+	}
+
+	function sendGet(rota) {
+		fetch(BASE_URL + rota, {
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			method: "GET"
+		})
+		.then(response => response.text())
+		.then(data => {
+			console.log('Success:', data)
+			alert(data)
+		})
+		.catch((error) => {
+			console.error('Error:', error)
+			alert(error)
+		})
+	}
+
+	function sendPost(rota, body) {
+		fetch(BASE_URL + rota, {
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			method: "POST",
+			body: JSON.stringify(body)
+		})
+		.then(response => response.text())
+		.then(data => {
+			console.log('Success:', data)
+			alert(data)
+		})
+		.catch((error) => {
+			console.error('Error:', error)
+			alert(error)
+		})
+	}
+	</script>
+</body>
+</html>

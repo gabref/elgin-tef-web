@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,300,400,500,600,700,800, 800i, 900&display=swap');
+/* m10 dimension: w 856 - h 483 */
 
 :root {
     --orange: #EA7C69;
@@ -46,7 +47,7 @@ main {
     justify-content: center;
     flex-wrap: wrap;
     align-items: stretch;
-    gap: 1.5em;
+    gap: 1.3em;
 }
 
 .card {
