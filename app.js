@@ -37,15 +37,15 @@ function relatorio() {
     sendGet('/adm/relatorio')
 }
 
-function venda() {
-    const venda = sendPost('/venda', null)
+async function venda() {
+    const venda = await sendPost('/venda', null)
 
     if (venda.resultado.data !== undefined)
         historicoVendas.push(venda)
 }
 
-function debito() {
-    const venda = sendPost('/venda/debito', {
+async function debito() {
+    const venda = await sendPost('/venda/debito', {
         valor: "1.00"
     })
 
@@ -53,8 +53,8 @@ function debito() {
         historicoVendas.push(venda)
 }
 
-function credito() {
-    const venda = sendPost('/venda/credito', {
+async function credito() {
+    const venda = await sendPost('/venda/credito', {
         valor: "1.00",
         parcelas: "1",
         financiamento: "1"
