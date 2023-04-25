@@ -84,19 +84,6 @@ async function sendGet(rota) {
     }
 }
 
-// const responseData = await fetch(BASE_URL + '/venda/credito', {
-//     headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json'
-//     },
-//     method: "POST",
-//     body: JSON.stringify({
-//         valor: "1.00",
-//         parcelas: "1",
-//         financiamento: "1"
-//     })
-// })
-
 async function sendPost(rota, body) {
     try {
         const responseData = await fetch(BASE_URL + rota, {
