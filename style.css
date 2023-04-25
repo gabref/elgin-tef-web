@@ -27,18 +27,19 @@ nav {
     width: 100%;
     display: flex;
     align-items: center;
-    margin-left: 100px;
-    font-size: 50px;
+
+    margin-left: 50px;
+    font-size: 35px;
     font-weight: 500;
 }
 
 main {
-    padding: 10em 2em;
     width: 100vw;
+    position: relative;
 }
 
 .container {
-    padding-top: 5em;
+    padding-top: 7em;
     margin: 3rem 0;
     display: flex;
     align-items: center;
@@ -50,19 +51,19 @@ main {
 
 .card {
     background-color: var(--gray-800);
-    max-width: 350px;
-    min-width: 250px;
-    height: 150px;
+    width: 170px;
+    height: 100px;
     position: relative;
     border-radius: 2em;
+    margin-top: 1em;
 }
 
 .card-top {
-    height: 60px;
-    width: 60px;
+    height: 40px;
+    width: 40px;
     position: absolute;
     z-index: 10;
-    top: -30px;
+    top: -20px;
     left: 50%;
     transform: translateX(-50%);
 
