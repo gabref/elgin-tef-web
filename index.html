@@ -8,14 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <script src="app.js"></script>
-    <script>
-        window.onload = () => start()
-        window.onbeforeunload = () => stop()
-
-        lucide.createIcons()
-    </script>
     <nav>
         Elgin TEF Web
     </nav>
@@ -24,13 +17,6 @@
 
         <div class="container">
 
-            <button onclick="start()">
-                start
-            </button>
-            <button onclick="stop()">
-                stop
-            </button>
-            
                     <div class="card" onclick="configuracao()">
                         <div class="card-top">
                             <i icon-name="settings" class="icon"></i>
@@ -107,5 +93,12 @@
 
     </main>
 
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+        window.onload = () => start()
+        window.onbeforeunload = () => stop()
+
+        lucide.createIcons()
+    </script>
 </body>
 </html>
