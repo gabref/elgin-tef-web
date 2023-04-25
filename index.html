@@ -95,6 +95,11 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <script>
         lucide.createIcons()
+
+        const w = window.innerWidth
+        const h = window.innerHeight
+        const title = document.querySelector('nav')
+        title.innerText = 'w: ' + w + ' - h: ' + h
     </script>
 </body>
 </html>
