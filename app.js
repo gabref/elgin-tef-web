@@ -70,10 +70,12 @@ async function sendGet(rota) {
             },
             method: "GET"
         })
-        const data = await responseData.text()
+        const data = await responseData.json()
 
-        console.log(data)
-        alert(data)
+        console.log('data json get', data)
+        alert(JSON.stringify(data))
+
+        return data
     } catch (err) {
         console.error(err)
         alert(err)
@@ -90,17 +92,12 @@ async function sendPost(rota, body) {
             method: "POST",
             body: JSON.stringify(body)
         })
-        // const data = await responseData.text()
         const dataJson = await responseData.json()
         
-        // console.log('success: ', data)
-        // alert(data)
-        alert(dataJson)
+        console.log('json', dataJson)
+        alert(JSON.stringify(dataJson))
 
-        return {
-            // data,
-            dataJson
-        }
+        return dataJson
 
     } catch (err) {
         console.error('error: ', err)
