@@ -1,4 +1,5 @@
 const BASE_URL = 'http://localhost:2001/tef/v1'
+
 const vendas = []
 
 function start() {
@@ -48,11 +49,13 @@ function debito() {
 }
 
 function credito() {
-    sendPost('/venda/credito', {
+    const venda = sendPost('/venda/credito', {
         valor: "1.00",
         parcelas: "1",
         financiamento: "1"
     })
+
+    vendas.push(venda)
 }
 
 function cancelamento() {
@@ -96,6 +99,8 @@ async function sendPost(rota, body) {
         })
         const dataJson = await responseData.json()
         
+        dataJson.resultado = await dataJson.resultado.json()
+
         console.log('json', dataJson)
         alert(JSON.stringify(dataJson))
 
