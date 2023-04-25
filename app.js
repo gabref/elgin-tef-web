@@ -91,9 +91,17 @@ async function sendPost(rota, body) {
             body: JSON.stringify(body)
         })
         const data = await responseData.text()
+        const dataJson = await responseData.json()
         
         console.log('success: ', data)
         alert(data)
+        alert(dataJson)
+
+        return {
+            data,
+            dataJson
+        }
+
     } catch (err) {
         console.error('error: ', err)
         alert(err)
