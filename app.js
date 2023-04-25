@@ -1,4 +1,5 @@
 const BASE_URL = 'http://localhost:2001/tef/v1'
+const vendas = []
 
 function start() {
     window.location.href = "intent://connect/start"
@@ -27,8 +28,9 @@ function ativacao() {
     })
 }
 
-function reimpressao() {
-    sendGet('/adm/reimpressao')
+async function reimpressao() {
+    const venda = await sendGet('/adm/reimpressao')
+    vendas.push[venda]
 }
 
 function relatorio() {
@@ -81,6 +83,19 @@ async function sendGet(rota) {
         alert(err)
     }
 }
+
+const responseData = await fetch(BASE_URL + '/venda/credito', {
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    method: "POST",
+    body: JSON.stringify({
+        valor: "1.00",
+        parcelas: "1",
+        financiamento: "1"
+    })
+})
 
 async function sendPost(rota, body) {
     try {
