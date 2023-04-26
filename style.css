@@ -38,6 +38,10 @@ nav h1 {
     font-weight: 500;
 }
 
+nav .nav-buttons {
+    left: 15%;
+}
+
 main {
     width: 100vw;
     position: relative;
