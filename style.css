@@ -4,8 +4,10 @@
 :root {
     --orange: #EA7C69;
     --white: #DCDCDC;
+    --less-white: #dcdcdca4;
     --gray-300: #252836;
     --gray-800: #1F1D2B;
+    --gray-900: #1b1919;
 }
 
 * {
@@ -27,6 +29,7 @@ nav {
     left: 0;
     height: 130px;
     width: 100%;
+    padding-left: 3rem;
 
     display: flex;
     align-items: center;
@@ -41,7 +44,8 @@ nav h1 {
 .nav-buttons {
     display: flex;
     gap: 2rem;
-    margin-right: 7rem;
+    margin-right: 5rem;
+    z-index: 10;
 }
 
 .nav-buttons a {
@@ -49,6 +53,24 @@ nav h1 {
     text-decoration: none;
     color: var(--white);
     left: 15%;
+}
+
+.nav-buttons button {
+    font-size: 30px;
+    text-decoration: none;
+    background: transparent;
+    border: transparent;
+    color: var(--white);
+    left: 15%;
+
+    background-color: var(--gray-800);
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.nav-buttons button:hover {
+    color: var(--less-white);
+    background-color: var(--gray-900);
 }
 
 main {
@@ -74,6 +96,11 @@ main {
     position: relative;
     border-radius: 2em;
     margin-top: 1em;
+}
+
+.card:hover {
+    background-color: var(--gray-900);
+    color: var(--less-white);
 }
 
 .card-top {

@@ -75,9 +75,9 @@ async function cancelamento() {
     console.log('dados resgatados', {valor, nsu, data })
 
     const cancelamentoResponse = await sendPost('/adm/cancelamento', {
-        valor: '1.00',
-        nsu: nsu,
-        data: '26/04/23'
+        valor,
+        nsu,
+        data
     })
 
     if (cancelamentoResponse.resultado.mensagem.indexOf('CANCELADA') !== -1)
