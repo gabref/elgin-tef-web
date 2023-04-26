@@ -73,11 +73,12 @@ async function cancelamento() {
     const data = ultimaVenda.resultado.data.split(' ')[0]
 
     console.log('dados resgatados', valor, nsu, data)
+    console.log({valor, nsu, data })
 
     const cancelamentoResponse = await sendPost('/adm/cancelamento', {
-        valor,
-        nsu,
-        data
+        valor: valor,
+        nsu: nsu,
+        data: data
     })
 
     if (cancelamentoResponse.resultado.mensagem.indexOf('CANCELADA') !== -1)
