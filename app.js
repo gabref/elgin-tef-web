@@ -64,7 +64,7 @@ async function credito() {
         historicoVendas.push(venda)
 }
 
-function cancelamento() {
+async function cancelamento() {
     const ultimaVenda = historicoVendas.pop()
     if (ultimaVenda === undefined) return
 
@@ -74,11 +74,15 @@ function cancelamento() {
 
     console.log('dados resgatados', valor, nsu, data)
 
-    sendPost('/adm/cancelamento', {
-        valor: '1.00',
-        nsu: nsu,
-        data: '25/04/23'
+    const cancelamentoResponse = await sendPost('/adm/cancelamento', {
+        valor,
+        nsu,
+        data
     })
+
+    if (cancelamentoResponse.resultado.mensagem.indexOf('CANCELADA') !== -1)
+        historicoVendas.push(cancelamentoResponse)
+
 }
 
 async function sendGet(rota) {
