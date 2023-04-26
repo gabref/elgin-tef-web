@@ -38,7 +38,16 @@ nav h1 {
     font-weight: 500;
 }
 
-nav .nav-buttons {
+.nav-buttons {
+    display: flex;
+    gap: 2rem;
+    margin-right: 7rem;
+}
+
+.nav-buttons a {
+    font-size: 30px;
+    text-decoration: none;
+    color: var(--white);
     left: 15%;
 }
 
