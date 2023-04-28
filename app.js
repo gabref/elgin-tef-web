@@ -68,7 +68,7 @@ async function cancelamento() {
     const ultimaVenda = historicoVendas.pop()
     if (ultimaVenda === undefined) return
 
-    const { nsu, valor } = ultimaVendaj.resultado
+    const { nsu, valor } = ultimaVenda.resultado
     const data = ultimaVenda.resultado.data.split(' ')[0].replace(/\/20/g, '/')
 
     if (valor.indexOf('.') !== -1)
