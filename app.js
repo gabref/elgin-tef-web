@@ -70,7 +70,7 @@ async function cancelamento() {
 
     const valor = ultimaVenda.resultado.valor
     const nsu = ultimaVenda.resultado.nsu
-    const data = ultimaVenda.resultado.data.split(' ')[0]
+    const data = ultimaVenda.resultado.data.split(' ')[0].replace('20', '')
 
     console.log('dados resgatados', {valor, nsu, data })
 
