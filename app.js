@@ -55,7 +55,7 @@ async function debito() {
 
 async function credito() {
     const venda = await sendPost('/venda/credito', {
-        valor: "1.00",
+        valor: "1.27",
         parcelas: "1",
         financiamento: "1"
     })
